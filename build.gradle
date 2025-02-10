@@ -28,17 +28,9 @@ allprojects {
 }
 
 subprojects {
-    jacoco {
-        toolVersion = "0.8.10"
-    }
-
-    tasks.withType(Test) {
-        finalizedBy tasks.named("jacocoTestReport")
-    }
 
     tasks.register("jacocoTestReport", JacocoReport) {
         dependsOn "test"
-//        finalizedBy "sonarqube"
         reports {
             xml.required = true
             html.required = true
