@@ -29,7 +29,11 @@ jobs:
     name: SONAR
     needs: test
     runs-on: ubuntu-latest
-        - name: Analisar com SonarQube
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Analisar com SonarQube
         run: ./gradlew sonarqube
 
       - name: Verificar Cobertura de Código
