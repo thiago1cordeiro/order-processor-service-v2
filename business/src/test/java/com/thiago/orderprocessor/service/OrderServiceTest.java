@@ -23,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -144,5 +145,51 @@ class OrderServiceTest {
         assertEquals("Order not found by id -1", error.getMessage());
         
         verify(orderRepository, times(1)).findOrderById(orderId);
+    }
+    
+    @Test
+    void deleteOrderByIdSuccestTest() {
+        doNothing().when(orderRepository).deleteOrderById(any());
+        
+        orderService.deleteOrderById(1);
+        
+        verify(orderRepository, times(1)).deleteOrderById(any());
+        
+    }
+    
+    @Test
+    void deleteItemByIdSuccestTest() {
+        
+        orderService.deleteItemById(1);
+        
+        
+    }
+    
+    @Test
+    void deleteItemByIdNotSuccestTest() {
+        
+        final BadRequestException error = assertThrows(BadRequestException.class, () -> orderService.deleteItemById(2));
+        
+        assertEquals("Error", error.getMessage());
+        
+        
+    }
+    
+    @Test
+    void deleteItemByIdSuccestTest2() {
+        
+        orderService.deleteItemById2(1);
+        
+        
+    }
+    
+    @Test
+    void deleteItemByIdNotSuccestTest2() {
+        
+        final BadRequestException error = assertThrows(BadRequestException.class, () -> orderService.deleteItemById2(2));
+        
+        assertEquals("Error", error.getMessage());
+        
+        
     }
 }
