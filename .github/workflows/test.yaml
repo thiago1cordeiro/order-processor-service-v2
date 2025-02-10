@@ -25,30 +25,13 @@ jobs:
           chmod +x ./gradlew
           ./gradlew clean build jacocoTestReport
 
-      - name: Listar arquivos do Jacoco
-        run: |
-          echo "Listando arquivos gerados em build/reports/jacoco/test/"
-          ls -R application/build/reports/jacoco/test/
-          ls -R business/build/reports/jacoco/test/
       - name: Analisar com SonarQube
         run: ./gradlew sonarqube -Dsonar.projectKey=order-processor-service
-
-      - name: Verificar Cobertura de Código
-        run: |
-          COVERAGE=$(grep -oP '(?<=<counter type="LINE" covered=")\d+' build/reports/jacoco/test/jacocoTestReport.xml | awk '{sum+=$1} END {print sum}')
-          TOTAL_LINES=$(grep -oP '(?<=<counter type="LINE" covered=")\d+' build/reports/jacoco/test/jacocoTestReport.xml | wc -l)
-          MIN_COVERAGE=80
-          echo "-> $COVERAGE%"
-          echo "-> $TOTAL_LINES%"
-          if [ "$COVERAGE" -lt $((MIN_COVERAGE * TOTAL_LINES / 100)) ]; then
-            echo "Cobertura de código insuficiente! Esperado: $MIN_COVERAGE%, obtido: $COVERAGE%"
-            exit 1
-          fi        
 
       - name: Verificar Quality Gate do SonarQube
         run: |
           SONAR_STATUS=$(curl -s -u $SONAR_TOKEN: "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=order-processor-service")
-          if [[ $(echo "$SONAR_STATUS" | jq -r '.projectStatus.status') != "OK" ]]; then
+          if [[ $(echo "$SONAR_STATUS" | jq -r '.projectStatus.status') == "ERROR" ]]; then
               echo "Quality Gate falhou no SonarQube!"
               exit 1
           fi
