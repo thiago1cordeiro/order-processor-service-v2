@@ -28,7 +28,7 @@ jobs:
       - name: Listar arquivos do Jacoco
         run: |
           echo "Listando arquivos gerados em build/reports/jacoco/test/"
-          ls -R build/reports/jacoco/test/
+          ls -R application/build/reports/jacoco/test/
           ls -R business/build/reports/jacoco/test/
       - name: Analisar com SonarQube
         run: ./gradlew sonarqube -Dsonar.projectKey=order-processor-service
