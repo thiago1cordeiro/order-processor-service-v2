@@ -131,4 +131,17 @@ public class OrderServiceImpl implements OrderService {
         
         throw new BadRequestException("Error");
     }
+    
+    
+    @Override
+    public void deleteItemById3(final Integer orderId) {
+        if (orderId == 1) {
+            System.out.println("Item ok");
+            return;
+        }
+        
+        throw new BadRequestException("Error");
+    }
+    
+    
 }
