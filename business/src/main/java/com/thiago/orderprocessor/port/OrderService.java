@@ -9,4 +9,6 @@ public interface OrderService {
     void deleteOrderById(Integer orderId);
     
     void deleteItemById(Integer orderId);
+    
+    void deleteItemById2(Integer orderId);
 }
