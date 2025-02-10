@@ -106,4 +106,9 @@ public class OrderServiceImpl implements OrderService {
                 () -> new CustomsNotFoundException(STR."Order not found by id \{orderId}")
         );
     }
+    
+    @Override
+    public void deleteOrderById(final Integer orderId) {
+        orderRepository.deleteOrderById(orderId);
+    }
 }

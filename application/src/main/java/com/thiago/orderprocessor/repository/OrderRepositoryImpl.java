@@ -77,4 +77,10 @@ public class OrderRepositoryImpl implements OrderRepository {
     public Boolean checkOrderNumberExistInDb(final String numberOrder) {
         return orderRepositoryJpa.findByNumberOrder(numberOrder).isPresent();
     }
+    
+    @Override
+    public void deleteOrderById(final Integer orderId) {
+        itemRepositoryJpa.deleteByOrderId(orderId);
+        orderRepositoryJpa.deleteById(orderId);
+    }
 }

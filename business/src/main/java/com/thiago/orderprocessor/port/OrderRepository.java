@@ -8,4 +8,5 @@ public interface OrderRepository {
     Order createOrder(Order order);
     Optional<Order> findOrderById(Integer orderId);
     Boolean checkOrderNumberExistInDb(String orderNumber);
+    void deleteOrderById(Integer orderId);
 }
