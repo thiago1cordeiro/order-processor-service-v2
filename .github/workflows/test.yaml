@@ -43,7 +43,7 @@ jobs:
       - name: Verificar Quality Gate do SonarQube
         run: |
           SONAR_STATUS=$(curl -s -u $SONAR_TOKEN: "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=order-processor-service")
-          if [[ $(echo "$SONAR_STATUS" | jq -r .projectStatus.status) != "OK" ]]; then
+          if [[ $(echo "$SONAR_STATUS" | jq -r '.projectStatus.status') != "OK" ]]; then
               echo "Quality Gate falhou no SonarQube!"
               exit 1
           fi
