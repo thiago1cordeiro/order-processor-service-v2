@@ -25,7 +25,11 @@ jobs:
           chmod +x ./gradlew
           ./gradlew clean build jacocoTestReport --info
 
-      - name: Analisar com SonarQube
+  sonarqube:
+    name: SONAR
+    needs: test
+    runs-on: ubuntu-latest
+        - name: Analisar com SonarQube
         run: ./gradlew sonarqube
 
       - name: Verificar Cobertura de Código
@@ -49,7 +53,7 @@ jobs:
 
   build:
     name: BUILD APP
-    needs: test
+    needs: sonarqube
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
