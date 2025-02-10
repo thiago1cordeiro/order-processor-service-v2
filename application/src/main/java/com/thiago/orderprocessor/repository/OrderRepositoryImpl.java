@@ -80,7 +80,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     
     @Override
     public void deleteOrderById(final Integer orderId) {
-        itemRepositoryJpa.deleteByOrderId(orderId);
+        itemRepositoryJpa.deleteById(orderId);
         orderRepositoryJpa.deleteById(orderId);
     }
 }

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ItemRepositoryJpa extends JpaRepository<ItemEntity, Integer> {
-    void deleteByOrderId(Integer orderId);
+//    void deleteByOrderId(Integer orderId);
 }
