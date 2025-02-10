@@ -19,18 +19,11 @@ test {
     useJUnitPlatform()
 }
 
-jacoco {
-    toolVersion = "0.8.10"
-}
-
-tasks.named("test") {
-    finalizedBy "jacocoTestReport"
-}
-
 tasks.jacocoTestReport {
     dependsOn "test"
     reports {
         xml.required = true
         html.required = true
+        csv.required = false
     }
 }
