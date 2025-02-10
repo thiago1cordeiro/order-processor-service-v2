@@ -161,6 +161,7 @@ class OrderServiceTest {
     void deleteItemByIdSuccestTest() {
         
         orderService.deleteItemById(1);
+        verify(orderRepository, times(0)).deleteOrderById(any());
         
         
     }
@@ -180,7 +181,7 @@ class OrderServiceTest {
         
         orderService.deleteItemById2(1);
         
-        
+        verify(orderRepository, times(0)).deleteOrderById(any());
     }
     
     @Test

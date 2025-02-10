@@ -39,19 +39,19 @@ public class OrderController implements OrderControllerDocumentation {
     }
     
     @DeleteMapping("/{orderId}")
-    public ResponseEntity<?> deleteOrderById(@PathVariable("orderId") final Integer orderId){
+    public ResponseEntity<String> deleteOrderById(@PathVariable("orderId") final Integer orderId){
         orderService.deleteOrderById(orderId);
         return ResponseEntity.noContent().build();
     }
     
     @DeleteMapping("/item/{orderId}")
-    public ResponseEntity<?> deleteItemById(@PathVariable("itemId") final Integer orderId){
+    public ResponseEntity<String> deleteItemById(@PathVariable("itemId") final Integer orderId){
         orderService.deleteItemById(orderId);
         return ResponseEntity.noContent().build();
     }
     
     @DeleteMapping("/item/{orderId}")
-    public ResponseEntity<?> deleteItemById2(@PathVariable("itemId") final Integer orderId){
+    public ResponseEntity<String> deleteItemById2(@PathVariable("itemId") final Integer orderId){
         orderService.deleteItemById2(orderId);
         return ResponseEntity.noContent().build();
     }
