@@ -13,4 +13,6 @@ public interface OrderService {
     void deleteItemById2(Integer orderId);
     
     void deleteItemById3(Integer orderId);
+    
+    void deleteItemById4(Integer orderId);
 }

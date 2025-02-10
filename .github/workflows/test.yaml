@@ -28,11 +28,6 @@ jobs:
       - name: Analisar com SonarQube
         run: ./gradlew sonar -Dsonar.projectKey=order-processor-service
 
-  checkSonar:
-    name: CHECK COVARAGE SONAR
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
       - name: Verificar Quality Gate do SonarQube
         run: |
           SONAR_STATUS=$(curl -s -u $SONAR_TOKEN: "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=order-processor-service")
@@ -44,7 +39,7 @@ jobs:
 
   build:
     name: BUILD APP
-    needs: checkSonar
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
