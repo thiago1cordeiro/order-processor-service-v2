@@ -28,7 +28,7 @@ jobs:
 
       - name: Analisar com SonarQube
         env:
-          SONAR_TOKEN: squ_7ade39635d0dfa6c12632c925eb3abf7da11d187
+          SONAR_TOKEN: sqa_026c8aa16e033fd82b25252be25c69f4c3bb042a
           SONAR_HOST_URL: http://ec2-3-16-67-144.us-east-2.compute.amazonaws.com:9000/
         run: ./gradlew sonar
 

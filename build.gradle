@@ -31,8 +31,8 @@ sonarqube {
     properties {
         property "sonar.projectKey", "create-user-service"
         property "sonar.organization", "thiago-organization"
-        property "sonar.host.url", "http://ec2-3-128-173-243.us-east-2.compute.amazonaws.com:9000/"
-        property "sonar.login", "squ_7ade39635d0dfa6c12632c925eb3abf7da11d187"
+        property "sonar.host.url", "http://ec2-3-16-67-144.us-east-2.compute.amazonaws.com:9000/"
+        property "sonar.login", "sqa_026c8aa16e033fd82b25252be25c69f4c3bb042a"
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.language", "java"
         property "sonar.java.binaries", "${projectDir}/build/classes/java/main"
