@@ -38,7 +38,7 @@ subprojects {
 
     tasks.register("jacocoTestReport", JacocoReport) {
         dependsOn "test"
-        finalizedBy "sonarqube"
+//        finalizedBy "sonarqube"
         reports {
             xml.required = true
             html.required = true
