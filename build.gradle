@@ -27,9 +27,40 @@ allprojects {
     }
 }
 
+subprojects {
+    jacoco {
+        toolVersion = "0.8.10"
+    }
+
+    tasks.withType(Test) {
+        finalizedBy tasks.named("jacocoTestReport")
+    }
+
+    tasks.register("jacocoTestReport", JacocoReport) {
+        dependsOn "test"
+        reports {
+            xml.required = true
+            html.required = true
+        }
+
+        classDirectories.setFrom(
+                files(classDirectories.files.map {
+                    fileTree(it) {
+                        exclude(
+                                "**/exception/**",
+                                "**/dto/**",
+                                "**/config/**",
+                                "**/record/**"
+                        )
+                    }
+                })
+        )
+    }
+}
+
 sonarqube {
     properties {
-        property "sonar.projectKey", "create-user-service"
+        property "sonar.projectKey", "order-processor-service"
         property "sonar.organization", "thiago-organization"
         property "sonar.host.url", "http://ec2-3-16-67-144.us-east-2.compute.amazonaws.com:9000/"
         property "sonar.login", "sqa_026c8aa16e033fd82b25252be25c69f4c3bb042a"
@@ -37,22 +68,21 @@ sonarqube {
         property "sonar.language", "java"
         property "sonar.java.binaries", "${projectDir}/build/classes/java/main"
         property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/testCodeCoverageReport/testCodeCoverageReport.xml"
-        //
     }
 }
-
-jacoco {
-    toolVersion = "0.8.10"
-}
-
-tasks.named("test") {
-    finalizedBy "jacocoTestReport"
-}
-
-tasks.jacocoTestReport {
-    dependsOn "test"
-    reports {
-        xml.required = true
-        html.required = true
-    }
-}
+//
+//jacoco {
+//    toolVersion = "0.8.10"
+//}
+//
+//tasks.named("test") {
+//    finalizedBy "jacocoTestReport"
+//}
+//
+//tasks.jacocoTestReport {
+//    dependsOn "test"
+//    reports {
+//        xml.required = true
+//        html.required = true
+//    }
+//}
