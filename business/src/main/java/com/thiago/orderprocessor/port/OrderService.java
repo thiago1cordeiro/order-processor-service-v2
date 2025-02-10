@@ -8,4 +8,5 @@ public interface OrderService {
     Order findOrderById(Integer orderId);
     void deleteOrderById(Integer orderId);
     
+    void deleteItemById(Integer orderId);
 }

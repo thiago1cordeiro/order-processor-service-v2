@@ -35,9 +35,9 @@ public class OrderServiceImpl implements OrderService {
         try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()) {
             
             final List<Future<Item>> futures = addCenterDistributionInItemOrder(order, executor);
-
+            
             final List<Item> itemsWithDistributionCenter = getMapperFutureByItem(futures);
-
+            
             final var newOrderByCreate = mapperNewOrder(order, itemsWithDistributionCenter);
             
             return orderRepository.createOrder(newOrderByCreate);
@@ -110,5 +110,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void deleteOrderById(final Integer orderId) {
         orderRepository.deleteOrderById(orderId);
+    }
+    
+    @Override
+    public void deleteItemById(final Integer orderId) {
+        if (orderId == 1) {
+            System.out.println("Item ok");
+            return;
+        }
+        
+        throw new BadRequestException("Error");
     }
 }
