@@ -6,13 +6,4 @@ public interface OrderService {
     
     Order processOrder(Order order);
     Order findOrderById(Integer orderId);
-    void deleteOrderById(Integer orderId);
-    
-    void deleteItemById(Integer orderId);
-    
-    void deleteItemById2(Integer orderId);
-    
-    void deleteItemById3(Integer orderId);
-    
-    void deleteItemById4(Integer orderId);
 }

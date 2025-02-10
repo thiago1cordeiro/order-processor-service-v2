@@ -37,34 +37,5 @@ public class OrderController implements OrderControllerDocumentation {
     public ResponseEntity<Order> getOrderById(@PathVariable("orderId") final Integer orderId) {
         return ResponseEntity.ok().body(orderService.findOrderById(orderId));
     }
-    
-    @DeleteMapping("/{orderId}")
-    public ResponseEntity<String> deleteOrderById(@PathVariable("orderId") final Integer orderId){
-        orderService.deleteOrderById(orderId);
-        return ResponseEntity.noContent().build();
-    }
-    
-    @DeleteMapping("/item/{orderId}")
-    public ResponseEntity<String> deleteItemById(@PathVariable("itemId") final Integer orderId){
-        orderService.deleteItemById(orderId);
-        return ResponseEntity.noContent().build();
-    }
-    
-    @DeleteMapping("/item/{orderId}")
-    public ResponseEntity<String> deleteItemById2(@PathVariable("itemId") final Integer orderId){
-        orderService.deleteItemById2(orderId);
-        return ResponseEntity.noContent().build();
-    }
-    
-    @DeleteMapping("/item/{orderId}")
-    public ResponseEntity<String> deleteItemById3(@PathVariable("itemId") final Integer orderId){
-        orderService.deleteItemById3(orderId);
-        return ResponseEntity.noContent().build();
-    }
-    
-    @DeleteMapping("/item/{orderId}")
-    public ResponseEntity<String> deleteItemById4(@PathVariable("itemId") final Integer orderId){
-        orderService.deleteItemById4(orderId);
-        return ResponseEntity.noContent().build();
-    }
+
 }
