@@ -44,16 +44,9 @@ subprojects {
         }
 
         classDirectories.setFrom(
-                files(classDirectories.files.map {
-                    fileTree(it) {
-                        exclude(
-                                "**/exception/**",
-                                "**/dto/**",
-                                "**/config/**",
-                                "**/record/**"
-                        )
-                    }
-                })
+                files(classDirectories.files.collect { fileTree(it) {
+                    exclude '**/exception/**', '**/dto/**', '**/config/**', '**/record/**'
+                }})
         )
     }
 }
