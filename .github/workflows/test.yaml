@@ -25,14 +25,6 @@ jobs:
           chmod +x ./gradlew
           ./gradlew clean build jacocoTestReport --info
 
-  sonarqube:
-    name: SONAR
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       - name: Analisar com SonarQube
         run: ./gradlew sonarqube
 
@@ -57,7 +49,7 @@ jobs:
 
   build:
     name: BUILD APP
-    needs: sonarqube
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
