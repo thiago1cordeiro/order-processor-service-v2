@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+dependencies {
+
+    implementation("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
+
+
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacoco {
+    toolVersion = "0.8.10"
+}
+
+tasks.named("test") {
+    finalizedBy "jacocoTestReport"
+}
+
+tasks.jacocoTestReport {
+    dependsOn "test"
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}

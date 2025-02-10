@@ -1,0 +1,3 @@
+rootProject.name = 'order-processor-service'
+include 'application', 'business', 'common'
+
