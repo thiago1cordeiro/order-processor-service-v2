@@ -28,22 +28,22 @@ allprojects {
 }
 
 subprojects {
-
-    tasks.register("jacocoTestReport", JacocoReport) {
-        dependsOn "test"
-        reports {
-            xml.required = true
-            html.required = true
-        }
-
-        classDirectories.setFrom(
-                files(classDirectories.files.collect {
-                    fileTree(it) {
-                        exclude '**/exception/**', '**/dto/**', '**/config/**', '**/record/**'
-                    }
-                })
-        )
-    }
+//
+//    tasks.register("jacocoTestReport", JacocoReport) {
+//        dependsOn "test"
+//        reports {
+//            xml.required = true
+//            html.required = true
+//        }
+//
+//        classDirectories.setFrom(
+//                files(classDirectories.files.collect {
+//                    fileTree(it) {
+//                        exclude '**/exception/**', '**/dto/**', '**/config/**', '**/record/**'
+//                    }
+//                })
+//        )
+//    }
 
     sonarqube {
         properties {
