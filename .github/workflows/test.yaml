@@ -23,7 +23,7 @@ jobs:
       - name: Run Tests
         run: |
           chmod +x ./gradlew
-          ./gradlew clean build jacocoTestReport
+          ./gradlew clean build jacocoTestReport --info
 
       - name: Analisar com SonarQube
         run: ./gradlew sonar

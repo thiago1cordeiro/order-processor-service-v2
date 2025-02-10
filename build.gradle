@@ -38,6 +38,7 @@ subprojects {
 
     tasks.register("jacocoTestReport", JacocoReport) {
         dependsOn "test"
+        finalizedBy "sonarqube"
         reports {
             xml.required = true
             html.required = true
@@ -63,19 +64,3 @@ sonarqube {
         property "sonar.coverage.jacoco.xmlReportPaths", "${buildDir}/reports/jacoco/test/jacocoTestReport.xml"
     }
 }
-//
-//jacoco {
-//    toolVersion = "0.8.10"
-//}
-//
-//tasks.named("test") {
-//    finalizedBy "jacocoTestReport"
-//}
-//
-//tasks.jacocoTestReport {
-//    dependsOn "test"
-//    reports {
-//        xml.required = true
-//        html.required = true
-//    }
-//}
