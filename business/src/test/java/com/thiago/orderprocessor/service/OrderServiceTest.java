@@ -211,4 +211,22 @@ class OrderServiceTest {
         
         
     }
+    
+    @Test
+    void deleteItemByIdSuccestTest4() {
+        
+        orderService.deleteItemById4(1);
+        
+        verify(orderRepository, times(0)).deleteOrderById(any());
+    }
+    
+    @Test
+    void deleteItemByIdNotSuccestTest4() {
+        
+        final BadRequestException error = assertThrows(BadRequestException.class, () -> orderService.deleteItemById3(2));
+        
+        assertEquals("Error", error.getMessage());
+        
+        
+    }
 }
