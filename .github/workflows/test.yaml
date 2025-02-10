@@ -30,8 +30,8 @@ jobs:
 
       - name: Verificar Cobertura de Código
         run: |
-          COVERAGE=$(grep -oP '(?<=<counter type="LINE" covered=")\d+' /build/reports/jacoco/test/jacocoTestReport.xml | awk '{sum+=$1} END {print sum}')
-          TOTAL_LINES=$(grep -oP '(?<=<counter type="LINE" covered=")\d+' /build/reports/jacoco/test/jacocoTestReport.xml | wc -l)
+          COVERAGE=$(grep -oP '(?<=<counter type="LINE" covered=")\d+' build/reports/jacoco/test/jacocoTestReport.xml | awk '{sum+=$1} END {print sum}')
+          TOTAL_LINES=$(grep -oP '(?<=<counter type="LINE" covered=")\d+' build/reports/jacoco/test/jacocoTestReport.xml | wc -l)
           MIN_COVERAGE=80
           echo "-> $COVERAGE%"
           echo "-> $TOTAL_LINES%"
